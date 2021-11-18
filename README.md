@@ -1,6 +1,6 @@
 # 超軽量ウェブサーバプロジェクト
 
-Tinyhttpdとは、J.David Blackstoneが1999年に書いた超軽量ウェブサイトであります。メインプログラムは、500行未満のコードで作られましたから、プログラミングの学習（特にC言語）及びウェブサーバ仕組みの理解には最適だと考えられます。それゆえ、恐縮入りますが、拙者が自習のために、メインプログラムを書き直しながら、その中にノートを日本語の注釈として付いていただきたいと思われます。
+Tinyhttpdとは、J.David Blackstoneが1999年に書いた超軽量ウェブサーバであります。メインプログラムは、500行未満のコードで作られましたから、プログラミングの学習（特にC言語）及びウェブサーバ仕組みの理解には最適だと考えられます。それゆえ、恐縮入りますが、拙者が自習のために、メインプログラムを書き直しながら、その中にノートを日本語の注釈として付いていただきたいと思われます。
 
 ## プロジェクトのウェブサイト
 
@@ -14,7 +14,7 @@ If you use this software or examine the code, I would appreciate knowing and wou
 
 This software is not production quality. It comes with no warranty of any kind, not even an implied warranty of fitness for a particular purpose. I am not responsible for the damage that will likely result if you use this software on your computer system.
 
-I wrote this webserver for an assignment in my networking class in　1999. We were told that at a bare minimum the server had to serve
+I wrote this webserver for an assignment in my networking class in 1999. We were told that at a bare minimum the server had to serve
 pages, and told that we would get extra credit for doing "extras." Perl had introduced me to a whole lot of UNIX functionality (I learned
 sockets and fork from Perl!), and O'Reilly's lion book on UNIX system
 calls plus O'Reilly's books on CGI and writing web clients in Perl got
