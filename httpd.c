@@ -85,6 +85,11 @@ void accept_request(int client)
     }
     url[i] = '\0';
 
+    if(strcasecmp(method, "GET") == 0)
+    {
+
+    }
+
 
 
 }
