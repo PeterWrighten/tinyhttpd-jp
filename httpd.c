@@ -155,6 +155,79 @@ void serve_file(int client, const char *filename)
     fclose(resource);
 }
 
+/**************************************************
+ * 
+ * 
+ * 
+ * 
+ * ************************************************/
+
+void execute_cgi(int client, const char *path, const char *method, const char *query_string)
+{
+    char buf[1024];
+    int cgi_output[2];
+    int cgi_input[2];
+    pid_t pid;
+    int status;
+    int i;
+    char c;
+    int numchars = 1;
+    int content_length = -1;
+
+    buf[0] = 'A'; buf[1] = '\0';
+    if(strcasecmp(method, "GET") == 0)
+        while((numchars > 0) && strcmp("\n", buf))
+            numchars = get_line(client, buf, sizeof(buf));
+    else 
+    {
+        numchars = get_line(client, buf, sizeof(buf));
+        while((numchars > 0) && strcmp("\n", buf))
+        {
+            buf[15] = '\0';
+            if(strcasecmp(buf, "Content-Length") == 0)
+                content_length = atoi(&(buf[16]));
+            numchars = get_line(client, buf, sizeof(buf));
+        }
+
+        if(content_length == -1) {
+            bad_request(client);
+            return;
+        }
+    }
+
+    sprintf(buf, "HTTP/1.0 200 OK\r\n");
+    send(client, buf, strlen(buf), 0);
+
+    if(pipe(cgi_output) < 0)
+    {
+        cannot_execute(client);
+        return;
+    }
+
+    if(pipe(cgi_input) < 0)
+    {
+        cannot_execute(client);
+        return;
+    }
+
+    if(pid == 0)
+    {
+        char meth_env[255];
+        char query_env[255];
+        char length_env[255];
+
+
+        dup2(cgi_output[1], 1);
+        dup2(cgi_input[0], 0);
+        close(cgi_output[0]);
+        close(cgi_input[1]);
+
+        //////////// Mark
+    }
+    
+}
+
+
 
 /**************************************************
  * 
