@@ -37,12 +37,10 @@ void error_die(const char *);
 int startup(u_short *);
 
 
-/**************************************************
- * 
- * 
- * 
- * 
- * ************************************************/
+/******************************************************************
+ *  Get a line from a socket, whether the line ends 
+ *  in a newline, carriage return, or a CRLF combination.
+ * ****************************************************************/
 
 int get_line(int sock, char *buf, int size)
 {
@@ -155,12 +153,15 @@ void serve_file(int client, const char *filename)
     fclose(resource);
 }
 
-/**************************************************
+/***********************************************************
  * 
+ *  Execute a CGI script. Will need to set environment
+ *  variables as appropriate.
+ *  
+ *  Parameters: client socket descriptor
+ *              path to the CGI script  
  * 
- * 
- * 
- * ************************************************/
+ * *********************************************************/
 
 void execute_cgi(int client, const char *path, const char *method, const char *query_string)
 {
